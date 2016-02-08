@@ -33,8 +33,12 @@ PhysicsWorld{
 			objects.add(obj)
 		}
 		{
-			objects.add(PhysicsObject(rrand(0,bounds.width),rrand(0,bounds.height),rrand(0.01,10)));
+			objects.add(PhysicsObject(rrand(0,bounds.width),rrand(0,bounds.height), rrand(5.0,50.0), rrand(5.0,50.0) ,rrand(0.01,10)));
 		}
+	}
+
+	clear{
+		objects.clear;
 	}
 
 	simulate{
