@@ -5,6 +5,7 @@ Physics - a simple physics system for calculating forces
 // PhysicsWorld - simple world for applying Vector2D forces to PhysicsObjects
 PhysicsWorld{
 	var <>bounds, <>gravity, forces, <objects;
+
 	*new{ | bounds, vecGravity |
 		^super.newCopyArgs(bounds, vecGravity).init;
 	}
