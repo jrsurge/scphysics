@@ -15,9 +15,10 @@ PhysicsObject{
 		vecVel = Vector2D(0,0);
 	}
 
-	update{
+	update{ |  worldBounds |
 		vecVel = vecVel + vecAccel;
 		vecPos = vecPos + vecVel;
+		this.checkBounds(worldBounds);
 		vecAccel = vecAccel * 0;
 	}
 
@@ -25,6 +26,32 @@ PhysicsObject{
 		var accel;
 		accel = vecForce / mass;
 		vecAccel = vecAccel + accel;
+	}
+
+	checkBounds{ | worldBounds |
+		//if outside bounds, invert velocity and reset position
+		if( this.vecPos.x > worldBounds.width )
+		{
+			this.vecVel.x = this.vecVel.x * -1;
+			this.vecPos.x = worldBounds.width;
+		};
+		if( this.vecPos.x < 0 )
+		{
+			this.vecVel.x = this.vecVel.x * -1;
+			this.vecPos.x = 0;
+		};
+
+		if( this.vecPos.y > worldBounds.height )
+		{
+			this.vecVel.y = this.vecVel.y * -1;
+			this.vecPos.y = worldBounds.height;
+		};
+
+		if( this.vecPos.y < 0 )
+		{
+			this.vecVel.y = this.vecVel.y * -1;
+			this.vecPos.y = 0;
+		};
 	}
 
 	printOn{ | stream |

@@ -41,7 +41,7 @@ PhysicsWorld{
 		forces.do({ | force |
 			objects.do({ | object |
 				object.applyForce(force);
-				object.update;
+				object.update(bounds);
 			});
 		});
 	}
